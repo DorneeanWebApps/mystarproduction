@@ -104,4 +104,14 @@ export const pictures=[
         orientation: "portrait",
         category:"peisaj"
     },
+    {
+        name:"gallery22",
+        orientation: "landscape",
+        category:"portret"
+    },
+    {
+        name:"gallery23",
+        orientation: "portrait",
+        category:"produs"
+    },
 ]

@@ -12,18 +12,6 @@ export const testimonialItems=[
         text: "Colaborarea cu MySTAR Production a fost o alegere foarte inspirata. Sunt foarte incantat de cum au decurs lucrurile. Materialele au fost livrate inainte de termenul stabilit si rezultatul a fost pe masura asteptarilor noastre. Michael e foarte cooperant si deschis la idei noi. Evident, vom continua colaborarea.",
     },  
     {
-        foto:"ripan",
-        name: "Marius RIPAN",
-        titlu: "Viceprimar VATRA DORNEI",
-        text: "Bla bla bal",
-    },  
-    {
-        foto:"doru",
-        name: "Doru BIGHIU",
-        titlu: "Director ORION MEDIA",
-        text: "Bla bla bal",
-    },  
-    {
         foto:"laura",
         name: "Laura ERHAN",
         titlu: "Artist",

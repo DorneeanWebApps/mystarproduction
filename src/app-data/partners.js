@@ -70,6 +70,27 @@ export const partnersItems=[
         textColor: "#b0357f"
     },
     {
+        logo:'22',
+        logoAlb: '22_alb',
+        link: "https://www.facebook.com/PlaiurileDornelor/",
+        title: 'Plaiurile Dornelor',
+        textColor: "#ecb139"
+    },
+    {
+        logo:'23',
+        logoAlb: '23_alb',
+        link: "https://www.facebook.com/plabucovinean/",
+        title: 'Plai Bucovinean',
+        textColor: "#a11c1c"
+    },
+    {
+        logo:'24',
+        logoAlb: '24_alb',
+        link: "https://www.facebook.com/dornadorului",
+        title: 'Dorna Dorului',
+        textColor: "#236e19"
+    },
+    {
         logo:'5',
         logoAlb: '5_alb',
         link: "https://www.facebook.com/bucovinaexpress/",
@@ -131,19 +152,5 @@ export const partnersItems=[
         link: "http://www.monitoruldedorna.ro",
         title: 'Monitorul de Dorna',
         textColor: "#d6211a"
-    },
-    {
-        logo:'18',
-        logoAlb: '18_alb',
-        link: 'https://tv.michaelstar.ro',
-        title: 'STAR Tv',
-        textColor: "#3792fb"
-    },
-    {
-        logo:'19',
-        logoAlb: '19_alb',
-        link: 'https://michaelstar.ro',
-        title: 'Michael STAR',
-        textColor: "#d71e1e"
     },
 ]
