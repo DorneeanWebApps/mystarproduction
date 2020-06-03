@@ -14,16 +14,6 @@ class AudioPreview extends LitElement {
     return [
       css`
 
-        #preview-holder{
-            width: 1170px;
-            height: 500px;
-            margin: 100px auto;
-            display: grid;
-            grid-template-columns: 400px 1fr;
-            padding-bottom: 50px;
-            box-shadow:0 6px 6px -6px #fff;
-
-        }
 
 
         #preview-accordion-holder::-webkit-scrollbar {
@@ -163,6 +153,8 @@ class AudioPreview extends LitElement {
             padding-bottom: 50px;
             box-shadow:0 6px 6px -6px #fff;
         }
+
+
 
         #preview-accordion-holder{
             height: 500px;

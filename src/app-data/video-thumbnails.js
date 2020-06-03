@@ -32,26 +32,30 @@ export const videoclipuri = {
     description:"Videoclipuri (inclusiv low cost) realizate in functie de preferinte si genul muzical abordat.",
     thumbs:[
         {
-        thumbnail:'thumb201',
-        link: "dop6RHhC6CU",
-        nume: "Colaj Muzica Populara"
-        }, {
-        thumbnail:'thumb202',
-        link: "ucpQTzQY1To",
-        nume: "Jolene"
-        }, {
-        thumbnail:'thumb203',
-        link: "iBbALKrjqMY",
-        nume: "Colaj Muzica Usoara"
-        }, {
-        thumbnail:'thumb204',
-        link: "8aVB-RIrcdA",
-        nume: "Fusion"
-        }, {
-        thumbnail:'thumb205',
-        link: "sszxbHXeE0A",
-        nume: "Grenade"
-        } 
+            thumbnail:'thumb206',
+            link: "5_LCY7Vn4FI",
+            nume: "Zmeuras"
+            }, {
+            thumbnail:'thumb207',
+            link: "w9Z95kM1dF0",
+            nume: "Lips don't lie"
+            }, {
+            thumbnail:'thumb201',
+            link: "dop6RHhC6CU",
+            nume: "Colaj Muzica Populara"
+            }, {
+            thumbnail:'thumb204',
+            link: "8aVB-RIrcdA",
+            nume: "Fusion"
+            }, {
+            thumbnail:'thumb203',
+            link: "iBbALKrjqMY",
+            nume: "Colaj Muzica Usoara"
+            }, {
+            thumbnail:'thumb202',
+            link: "ucpQTzQY1To",
+            nume: "Jolene"
+            }
     ]
 }
 

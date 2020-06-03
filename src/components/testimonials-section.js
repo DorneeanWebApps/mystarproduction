@@ -39,14 +39,7 @@ class TestimonialsSection extends LitElement {
           min-height: 100px;
              margin-top: 70px;      }
 
-      #artists-holder{
-          display: flex;
-          flex-direction: row;
-          height: 100px;
-          justify-content: flex-end;
-          align-items: center;
-          padding: 0 95px;
-      }
+
 
       .button-wrapper{
        height: 87px;
@@ -92,7 +85,6 @@ class TestimonialsSection extends LitElement {
      .button-card{
        display: flex;
        flex-direction: column;
-       width: 120px
      }
 
      .button-text{
@@ -101,7 +93,6 @@ class TestimonialsSection extends LitElement {
        text-align: center;
        text-transform: uppercase;
        color: #fff;
-       opacity: 0;
        transition: opacity .5s ease-out;
        font-family: 'Montserrat', sans-serif;
         font-weight: 700;
@@ -110,65 +101,43 @@ class TestimonialsSection extends LitElement {
 
      }
 
-     #content-holder{
-         position: relative;
-         display: grid;
-         grid-template-columns: 1fr 1170px 1fr;
-         margin: 20px 0;
-     }
-
+     
      #testimonials-holder{
          grid-column: 2/4;
          height: 350px;
          display:grid;
-         grid-template-columns: 225px 1fr;
          position: relative;
          z-index: 9;
      }
 
      #testimonial-foto-container-holder{
-        border-top: 350px solid #fff;
-        border-left: 225px solid transparent;
         position: relative;
      }
 
      #testimonial-foto-container{
-        border-top: 346px solid var(--app-secondary-color);
-        border-left: 221px solid transparent;
         bottom:2px;
         right: 0;
         position: absolute;
      }
 
-     #testimonial-content{
-         display: block;
-         height: 100%;
-         background: var(--app-secondary-color);
-         border-top: 2px solid #fff;
-         box-sizing: border-box;
-         padding: 0 150px;
-         text-align: right;
-         position: relative;
-     }
-
+     
      #profile-picture-holder{
          position: absolute;
-         height: 150px;
-         width:150px;
          border-radius: 50%;
          background: black;
-         bottom: 160px;
-         right: -55px;
          border: 2px solid white;
          padding: 2px;
          transition: border .3s ease-out;
-         z-index: 10
+         z-index: 10;
+         display: grid;
      }
 
      .main-image{
-        width: 150px;
-        height: 150px;
+        width: 99%;
+        height: 99%;
         border-radius: 50%;
+        align-self: center;
+        justify-self: center;
         opacity: 1;
         transition: opacity .3s ease-out;
      }
@@ -194,7 +163,6 @@ class TestimonialsSection extends LitElement {
      #testimonial-author{
          position: absolute;
          bottom: 16px;
-         right: 170px;
      }
 
      .name-text{
@@ -289,6 +257,7 @@ class TestimonialsSection extends LitElement {
      }
 
      #footer-wrapper{
+         margin-top: 100px;
          height: 200px;
          position: relative;
      }
@@ -340,6 +309,161 @@ class TestimonialsSection extends LitElement {
               opacity: 1;
             }
         }
+
+
+    @media(min-width: 1024px){
+        #artists-holder{
+          display: flex;
+          flex-direction: row;
+          height: 100px;
+          justify-content: flex-end;
+          align-items: center;
+          padding: 0 95px;
+      }
+
+      .button-card{
+        width: 120px
+        }
+
+    .button-text{
+        min-height: 62px;
+        opacity: 0;
+
+        }
+
+        #content-holder{
+         position: relative;
+         display: grid;
+         grid-template-columns: 1fr 1170px 1fr;
+         margin: 20px 0;
+     }
+
+     #testimonial-content{
+         display: block;
+         height: 100%;
+         background: var(--app-secondary-color);
+         border-top: 2px solid #fff;
+         box-sizing: border-box;
+         padding: 0 150px;
+         text-align: right;
+         position: relative;
+     }
+
+     #testimonials-holder{
+         grid-template-columns: 225px 1fr;
+         position: relative;
+     }
+
+
+     #testimonial-foto-container-holder{
+        border-top: 350px solid #fff;
+        border-left: 225px solid transparent;
+     }
+
+     #testimonial-foto-container{
+        border-top: 346px solid var(--app-secondary-color);
+        border-left: 221px solid transparent;
+     }
+
+     #profile-picture-holder{
+         height: 150px;
+         width:150px;
+         bottom: 160px;
+         right: -55px;
+     }
+
+     #testimonial-author{
+         right: 170px;
+     }
+
+     #mobile-testimonial-text{
+         display: none;
+     }
+
+ 
+
+    }
+
+    @media(max-width: 460px){
+
+        #partners-holder{
+            display: none;
+        }
+
+        #artists-holder{
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr 1fr;
+          justify-content: center;
+          align-items: center;
+          padding: 0 95px;
+      }
+
+      .button-wrapper{
+          width: 55px;
+          height :55px;
+      }
+
+      .button-holder{
+          height: 50px;
+          width:50px;
+      }
+
+
+      #testimonials-holder{
+         grid-template-columns: 350px 1fr;
+         position: relative;
+     }
+
+      #testimonial-foto-container-holder{
+        border-top: 350px solid #fff;
+        border-left: 350px solid transparent;
+     }
+
+     #testimonial-foto-container{
+        border-top: 346px solid var(--app-secondary-color);
+        border-left: 346px solid transparent;
+
+     }
+
+     #testimonial-content{
+         display: block;
+         height:100%;
+         box-sizing: border-box;
+         background: var(--app-secondary-color);
+         border-top: 2px solid white;
+         border-bottom: 2px solid white;
+     }
+
+     #testimonial-content>p{
+         display: none;
+
+     }
+
+     #profile-picture-holder{
+        height: 200px;
+         width: 200px;
+        bottom: 100px;
+        right: 100px;
+    }
+
+    #testimonial-author{
+        padding: 0 24px;
+        text-align: center;
+        width: 250px;
+    }
+
+    #mobile-testimonial-text{
+        padding: 0 24px 24px 24px;
+        text-align: justify;
+    }
+
+    #mobile-testimonial-text>p{
+        font-size: 13px;
+    }
+
+
+        
+    }
   
       `
       ]
@@ -381,6 +505,9 @@ class TestimonialsSection extends LitElement {
                     <p  class="name-text">${this.currentTestimonial.name}</p>
                     <p class="title-text"> ${this.currentTestimonial.titlu}</p>
                 </div>
+            </div>
+            <div id="mobile-testimonial-text">
+                <p>${this.currentTestimonial.text}</p>
             </div>
             <div id="partners-holder">
 

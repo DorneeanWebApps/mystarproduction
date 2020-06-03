@@ -202,7 +202,7 @@ class GraficComponent extends LitElement {
      @media (max-width: 460px) {
       #buttons-holder{
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
         align-content: center;
         justify-content: center;
         box-sizing: border-box;
@@ -212,6 +212,7 @@ class GraficComponent extends LitElement {
       .button-card{
         justify-items: center;
         justify-content: center;
+        margin: 0 auto;
           display: flex;
           flex-direction: column;
         }

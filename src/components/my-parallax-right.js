@@ -51,7 +51,7 @@ class MyParallaxRight extends LitElement {
         width: 50vw;
         right: 0;
         bottom: 0;
-        background: rgba(0,0,0,.6);
+        background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,0));
       }
 
 
@@ -90,7 +90,7 @@ class MyParallaxRight extends LitElement {
         
         #text-container{
             position: absolute;
-            left: 10vw;
+            left: 1vw;
             top: 15%;
           }
       }
@@ -115,7 +115,8 @@ class MyParallaxRight extends LitElement {
           }
 
 
-          #text-container{
+
+          #mobile-text-container{
             margin-top: 20vh;
             position: relative;
             display: block;
@@ -152,9 +153,13 @@ class MyParallaxRight extends LitElement {
           <img id="parallax-image" src="${this.data.image}">
           <div id="main-layer"></div>
           <div id="parallax-right-cover">
-
+            <div id="text-container">
+                <img id="paralax-logo" src="${this.data.logo}">
+                <h2>${this.data.title}</h2>
+                <p>${this.data.text}</p>
+            </div>
           </div>
-          <div id="text-container">
+          <div id="mobile-text-container">
               <img id="paralax-logo" src="${this.data.logo}">
               <h2>${this.data.title}</h2>
               <p>${this.data.text}</p>

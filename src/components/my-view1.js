@@ -18,6 +18,7 @@ import './my-article';
 import './slider-component';
 import './gallery-component';
 import './grafic-component';
+import './mobile-partners-component'
 
 import './audio-preview';
 import './video-preview';
@@ -55,6 +56,13 @@ class MyView1 extends PageViewElement {
       .section-presentation:hover>p{
         color: #fff;
 
+      }
+
+      @media (min-width: 1024px) {
+        footer-component,
+        mobile-partners-component{
+          display: none;
+        }
       }
 
       @media (max-width: 460px) {
@@ -100,6 +108,10 @@ class MyView1 extends PageViewElement {
         <grafic-component></grafic-component>
 
         <testimonials-section></testimonials-section>
+
+        <mobile-partners-component></mobile-partners-component>
+
+        <footer-component></footer-component>
 
 
     `;

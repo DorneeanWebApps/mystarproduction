@@ -8,15 +8,7 @@ class FooterComponent extends LitElement {
     return [
       css`
       
-        #footer-container{
-            display: grid;
-            height: 60px;
-            z-index: 1000;
-            background: #000;
-            grid-template-columns: 1fr auto 1fr;
-            align-content: center;
-            justify-content: center;
-        }
+
 
         .icon-love{
        height: 20px;
@@ -87,9 +79,7 @@ class FooterComponent extends LitElement {
          color: white;
      }
 
-     .href-link{
-         display: flex;
-     }
+
 
      .links-holder{
          display: flex;
@@ -135,6 +125,50 @@ class FooterComponent extends LitElement {
      }
 
 
+     @media(min-width: 1024px){
+      #footer-container{
+            display: grid;
+            height: 60px;
+            z-index: 1000;
+            background: #000;
+            grid-template-columns: 1fr auto 1fr;
+            align-content: center;
+            justify-content: center;
+        }
+
+        #contact-data-mobile{
+          display: none;
+        }
+
+        .href-link{
+         display: flex;
+     }
+     }
+
+     @media(max-width: 460px){
+      #footer-container{
+        padding: 100px 0 48px 0;;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         
+      }
+
+      #contact-data{
+        display: none;
+      }
+
+      .href-link{
+        color: white;
+      }
+
+      #contact-data-mobile{
+        padding: 24px 0;
+          display: grid;
+          justify-content: center;
+     }
+
+
       `
       ]
     
@@ -151,6 +185,11 @@ class FooterComponent extends LitElement {
                         <a class="social-href" target="blank" href="https://www.youtube.com/mystarproduction"> <svg title="You Tube" class="social-icon">${youtubeIcon}</svg></a>
                         <a class="social-href" target="blank" href="https://www.instagram.com/michaelmystar/"> <svg title="Instagram" class="social-icon">${instaIcon}</svg></a>
                     </div>
+                </div>
+
+                <div id="contact-data-mobile">
+                        <div class="href-link"><a class="social-href" target="blank" href="tel: +40740783488"> <svg class="social-icon link-icon">${phoneIcon}</svg></a>+40 740 783488</div>
+                        <div class="href-link"><a class="social-href" target="blank" href="mailto:office@mystarproduction.ro"> <svg class="social-icon link-icon">${mailIcon}</svg></a>&nbsp;office@mystarproduction.ro</div>
                 </div>
 
                 <div id="dev-data">

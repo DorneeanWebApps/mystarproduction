@@ -64,6 +64,7 @@ class MyApp extends connect(store)(LitElement) {
       contactSelected: Boolean,
       menuSelected: Object,
       mobileMenuActive: Boolean,
+      mobileContactActive: Boolean,
       elements: Array
     };
   }
@@ -145,18 +146,27 @@ class MyApp extends connect(store)(LitElement) {
           transition: all .1s ease-out;
         }
 
-        #contact-logo-holder{
+        .contact-logo-holder{
           display: block;
           border-bottom: 1px dotted #fff;
           text-align: center;
         }
 
-        #social-links{
-          align-self: flex-end;
-          height: 300px;
+        .social-links{
+          flex:1;
+          width: 250px;
+          padding: 48px 0;
           display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
           justify-content: center;
           align-content: center;
+        }
+
+        #social-icons{
+          display: grid;
+          width: 100%;
+          justify-content: center;
+          text-align: center;
         }
 
         .social-icon:hover{
@@ -309,17 +319,23 @@ class MyApp extends connect(store)(LitElement) {
         }
 
 
-        #contact-data{
+        .contact-data{
           display: flex;
+          flex-direction: column;
           width: 0;
           justify-self: flex-end;
           overflow: hidden;
+          height: 100%;
           transition: all .3s ease-out;
           text-align: right;
           font-family: 'Montserrat', sans-serif;
         }
 
-        #contact-data>h1, h2, h3, h4, h5, h6{
+        data-wrapper{
+          flex: 0;
+        }
+
+        .contact-data>h1, h2, h3, h4, h5, h6{
           color: #FFF;
 
         }
@@ -328,15 +344,15 @@ class MyApp extends connect(store)(LitElement) {
           display: inline-block;
         }
 
-        #contact-data> h4, h5,h6{
+        .contact-data> h4, h5,h6{
           margin: 0;
         }
 
-        #contact-data>h6{
+        .contact-data>h6{
           color: #666;
         }
 
-        #contact-data[selected]{
+        .contact-data[selected]{
           width: 307px;
           padding: 24px;
           border: 1px solid #fff;
@@ -366,11 +382,12 @@ class MyApp extends connect(store)(LitElement) {
         }
 
         .social-icon{
+
          color: white;
          height: 20px;
          width:20px;
-         margin: 0 36px;
          display: inline;
+         justify-self: center;
          transition: all .3s ease-out
      }
 
@@ -468,8 +485,7 @@ class MyApp extends connect(store)(LitElement) {
              position: relative;
            }
 
-           #mobile-menu{
-            width: 80px;
+           #mobile-menu{          
             position: fixed;
             background: rgba(0,0,0,.3);
             z-index: 1000;
@@ -477,38 +493,73 @@ class MyApp extends connect(store)(LitElement) {
             height: calc(100vh - 107px);
             right: 0;
             display: grid;
+            grid-template-columns: 80px 307px;
             justify-content: center;
             text-align: center;
             transform: translateX(100%);
             transition: all .2s ease-out;
           }
 
+          .menu-bar{
+            width: 80px;
+          }
+
           #mobile-menu[active]{
+            transform: translateX(307px);
+          } 
+
+          #mobile-menu[contact-selected]{
             transform: translateX(0);
+            background: rgba(0,0,0,.5);
           }
 
            #spacer{
              height: 500px;
            }
 
-           .mobile-menu-icon{
+           .mobile-menu-icon{mobile-header
              height :auto;
            }
 
            .mobile-menu-icon,
            .mobile-menu-icon>.menu-icon,
            .mobile-menu-icon>h6{
-             color: white
+             margin-top: 16px;
+             color: white;
+           }
+
+           .mobile-menu-icon>h6{
+            margin: 0 0 16px 0;
            }
 
 
            .mobile-menu-icon>.menu-icon{
-             margin: 16px;
+             margin: 0 16px;
              justify-self: center;
            }
 
-           
 
+           .menu-spacer{
+             height: 80px;
+           }
+
+           
+           .contact-header{
+             text-align: right;
+           }
+
+           .mobile-contact-data{
+             align-content: center;
+             box-sizing: border-box;
+           }
+
+           .contact-data-holder{
+             display: flex;
+             flex-direction: column;
+             width:100%;
+             padding: 24px;
+             box-sizing: border-box;
+           }
 
 
 
@@ -567,28 +618,50 @@ class MyApp extends connect(store)(LitElement) {
       </div>
       <div id="main-content">
 
-            <div id="mobile-menu" ?active="${this.mobileMenuActive===true}">
-                <div class="mobile-menu-icon">
-                    <svg class="menu-icon">${camera}</svg>
-                    <h6>VIDEO</h6>
-                </div>
-                <div class="mobile-menu-icon">
-                    <svg class="menu-icon">${microphone}</svg>
-                    <h6>AUDIO</h6>
-                </div>
-                  <div class="mobile-menu-icon">
-                    <svg class="menu-icon">${photo}</svg>
-                    <h6>FOTO</h6>
+            <div id="mobile-menu" ?active="${this.mobileMenuActive===true}" ?contact-selected="${this.mobileContactActive}">
+                <div class="menu-bar">
+                  <div class="mobile-menu-icon" ?selected="${this.selectedScrolledLink===1}" @click="${()=>this.selectedLink=1}">
+                      <svg class="menu-icon">${camera}</svg>
+                      <h6>VIDEO</h6>
                   </div>
-                  <div class="mobile-menu-icon">
-                    <svg class="menu-icon">${digital}</svg>
-                    <h6>GRAFICA</h6>
+                  <div class="mobile-menu-icon" ?selected="${this.selectedScrolledLink===2}" @click="${()=>this.selectedLink=2}">
+                      <svg class="menu-icon">${microphone}</svg>
+                      <h6>AUDIO</h6>
+                  </div>
+                    <div class="mobile-menu-icon" ?selected="${this.selectedScrolledLink===3}" @click="${()=>this.selectedLink=3}">
+                      <svg class="menu-icon">${photo}</svg>
+                      <h6>FOTO</h6>
+                    </div>
+                    <div class="mobile-menu-icon" ?selected="${this.selectedScrolledLink===4}" @click="${()=>this.selectedLink=4}">
+                      <svg class="menu-icon">${digital}</svg>
+                      <h6>GRAFICA</h6>
+                    </div>
+
+                    <div class="mobile-menu-icon" @click="${()=>this.showMobileContact()}">
+                      <svg class="menu-icon">${contact}</svg>
+                      <h6>CONTACT</h6>
+                    </div>
                   </div>
 
-                  <div class="mobile-menu-icon">
-                    <svg class="menu-icon">${contact}</svg>
-                    <h6>CONTACT</h6>
-                  </div>
+                  <div class="mobile-contact-data">
+
+                    <div class="contact-data-holder">
+                      <h2 class="contact-header">MySTAR Production</h2>
+                      <h4 class="contact-header">Vatra Dornei, Suceava</h4>
+                      <br>
+                      <h6 class="contact-header">CUI: 29862403</h6>
+                      <h6 class="contact-header">F33/366/2012</h6>
+                      <br>
+                      <h5 class="contact-header">0740 783488</h5>
+                      <h5 class="contact-header">office@mystarproduction.ro</h5>
+                      <iron-icon @click="${()=>this.showMobileContact()}" class="contact-icon" icon="av:skip-next"></iron-icon>
+                      <div class="social-links">
+                              <a class="social-href" target="blank" href="https://www.facebook.com/MySTARproduction/"> <svg title="Facebook" class="social-icon">${facebookIcon}</svg></a>
+                              <a class="social-href" target="blank" href="https://www.youtube.com/mystarproduction"> <svg title="You Tube" class="social-icon">${youtubeIcon}</svg></a>
+                              <a class="social-href" target="blank" href="https://www.instagram.com/michaelmystar/"> <svg title="Instagram" class="social-icon">${instaIcon}</svg></a>
+                      </div>
+                    </div>
+              </div>
           </div>
 
           <div id="mobile-slider">
@@ -628,27 +701,26 @@ class MyApp extends connect(store)(LitElement) {
                   </div>
 
               </div>
-              <div id="contact-data" ?selected=${this.contactSelected===true}>
-
-                  <div id="contact-logo-holder">
-                    <img class="contact-logo" id="main-logo" src="images/load.png">
-                  </div>
-                  <div class="contact-data-holder">
-                    <h2 class="contact-header">MySTAR Production</h2>
-                    <h4 class="contact-header">Vatra Dornei, Suceava</h4>
-                    <br>
-                    <h6 class="contact-header">CUI: 29862403</h6>
-                    <h6 class="contact-header">F33/366/2012</h6>
-                    <br>
-                    <h5 class="contact-header">0740 783488</h5>
-                    <h5 class="contact-header">office@mystarproduction.ro</h5>
-                    <iron-icon @click="${()=>this.showContact()}" class="contact-icon" icon="av:skip-next"></iron-icon>
-                    <div id="social-links">
-                        <div id="social-icons">
+              <div class="contact-data" ?selected=${this.contactSelected===true}>
+                  <div class="data-wrapper">
+                    <div class="contact-logo-holder">
+                      <img class="contact-logo" id="main-logo" src="images/load.png">
+                    </div>
+                    <div class="contact-data-holder">
+                      <h2 class="contact-header">MySTAR Production</h2>
+                      <h4 class="contact-header">Vatra Dornei, Suceava</h4>
+                      <br>
+                      <h6 class="contact-header">CUI: 29862403</h6>
+                      <h6 class="contact-header">F33/366/2012</h6>
+                      <br>
+                      <h5 class="contact-header">0740 783488</h5>
+                      <h5 class="contact-header">office@mystarproduction.ro</h5>
+                      <iron-icon @click="${()=>this.showContact()}" class="contact-icon" icon="av:skip-next"></iron-icon>
+                    </div>
+                    <div class="social-links">
                             <a class="social-href" target="blank" href="https://www.facebook.com/MySTARproduction/"> <svg title="Facebook" class="social-icon">${facebookIcon}</svg></a>
                             <a class="social-href" target="blank" href="https://www.youtube.com/mystarproduction"> <svg title="You Tube" class="social-icon">${youtubeIcon}</svg></a>
                             <a class="social-href" target="blank" href="https://www.instagram.com/michaelmystar/"> <svg title="Instagram" class="social-icon">${instaIcon}</svg></a>
-                        </div>
                     </div>
                   </div>
               </div>
@@ -657,7 +729,7 @@ class MyApp extends connect(store)(LitElement) {
 
 
           <!-- Main content -->
-          <main role="main" class="main-content">
+          <main role="main">
             <my-view1 class="page" .selectedLink=${this.selectedLink} @elements-defined=${(e)=>this.defineElements(e.detail)} @must-scroll=${(e)=>this.scrolltoElement(e.detail)} ?active="${this._page === 'view1'}"></my-view1>
             <my-view2 class="page" ?active="${this._page === 'view2'}"></my-view2>
             <my-view3 class="page" ?active="${this._page === 'view3'}"></my-view3>
@@ -678,7 +750,8 @@ class MyApp extends connect(store)(LitElement) {
     this.images3=['headf1','headf2'];
     this.images4=['headg1','headg2','headg3'];
     this.headerImages = ['headv1','heada2', 'headf1','headg1'];
-    this.mobileMenuActive = false;
+    this.mobileMenuActive = true;
+    this.mobileContactActive = false;
     this.menuSelected = {
       video: false,
       audio: false,
@@ -716,11 +789,11 @@ class MyApp extends connect(store)(LitElement) {
     if (changedProps.has('_page')) {
       const appContainer = this.shadowRoot.host;
       const pageTitle = this.appTitle + ' - ' + this._page;
-      updateMetadata({
-        title: pageTitle,
-        description: pageTitle
-        // This object also takes an image property, that points to an img src.
-      });
+      // updateMetadata({
+      //   title: pageTitle,
+      //   description: pageTitle
+      //   // This object also takes an image property, that points to an img src.
+      // });
       setTimeout(() => {
         window.scrollTo({
           top: 0,
@@ -730,6 +803,7 @@ class MyApp extends connect(store)(LitElement) {
     }
 
     if(changedProps.has("selectedLink")){
+      console.log(this.selectedLink);
       this.selectedScrolledLink = this.selectedLink;
       if(this.selectedLink===0){
         window.scrollTo({'behavior': 'smooth',
@@ -794,12 +868,27 @@ logoHoverOut(index){
     this.contactSelected=!this.contactSelected;
   }
 
+  showMobileContact(){
+    this.mobileContactActive = !this.mobileContactActive;
+  }
+
   scrolltoElement(detail){
+    const content = this.shadowRoot.querySelector("#main-content");
+    const header = this.shadowRoot.querySelector("#mobile-header");
     const pageOffSet = window.pageYOffset;
-    window.scrollTo({'behavior': 'smooth',
-    'left': 0,
-    'top': detail.top + pageOffSet
-    })
+    if(header.offsetHeight!=0){
+      content.scrollTo({'behavior': 'smooth',
+      'left': 0,
+      'top': detail.top + content.scrollTop - header.offsetHeight
+      })
+    }else{
+      window.scrollTo({'behavior': 'smooth',
+      'left': 0,
+      'top': detail.top + pageOffSet
+      })
+    }
+   
+    
   }
 
   hoverMenuItem(item){

@@ -1,11 +1,11 @@
 {
-  "name": "My App",
-  "short_name": "My App",
-  "description": "My App description",
+  "name": "MySTAR Production",
+  "short_name": "MySTAR Production",
+  "description": "Studio productie profesional video audio foto grafica, Vatra Dornei Suceava",
   "start_url": "/",
-  "display": "standalone",
-  "theme_color": "#3f51b5",
-  "background_color": "#3f51b5",
+  "display": "fullscreen",
+  "theme_color": "#009b74",
+  "background_color": "#009b74",
   "icons": [
     {
       "src": "images/manifest/icon-192x192.png",

@@ -12,10 +12,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>My app</title>
+    <title>MySTAR Production</title>
     <meta name="generator" content="PWA Starter Kit">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="My App description">
+    <meta name="description" content="Studio productie profesional - video audio foto grafica, Vatra Dornei Suceava. Multi avem aparatura buna. Foarte putini stim sa o folosim astfel incat dintr-o voce buna si instrumentisti buni sa obtinem o inregistrare exceptionala.">
 
     <!--
       The `<base>` tag below is present to support two advanced deployment options:
@@ -33,16 +33,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <link rel="manifest" href="manifest.json">
 
     <!-- See https://goo.gl/qRE0vM -->
-    <meta name="theme-color" content="#3f51b5">
+    <meta name="theme-color" content="#009b74">
 
     <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="My Star Production">
+    <meta name="application-name" content="MySTAR Production">
 
     <!-- Add to homescreen for Safari on iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="My Star Production">
+    <meta name="apple-mobile-web-app-title" content="MySTAR Production">
 
     <!-- Homescreen icons -->
     <link rel="apple-touch-icon" href="images/manifest/icon-48x48.png">
@@ -53,24 +53,48 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <!-- Tile icon for Windows 8 (144x144 + tile color) -->
     <meta name="msapplication-TileImage" content="images/manifest/icon-144x144.png">
-    <meta name="msapplication-TileColor" content="#3f51b5">
+    <meta name="msapplication-TileColor" content="#009b74">
     <meta name="msapplication-tap-highlight" content="no">
 
     <!-- Default twitter cards -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@username">
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="my-app">
-    <meta property="og:image" content="images/manifest/icon-144x144.png" />
+    <meta property="og:site_name" content="MySTAR Production">
+    <meta property="og:image" content="images/facebook-cover.jpg" />
 
     <!-- Performance tip: hint to the browser to start the handshake for the fonts site -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <script>
       // Load and register pre-caching Service Worker
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '399682617530041');
+      fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=399682617530041&ev=PageView&noscript=1"
+    /></noscript>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-136808231-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-136808231-1');
+    </script>
+    <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', function() {
           navigator.serviceWorker.register('service-worker.js', {
+            start_url: '/',
             scope: '/',
           });
         });
@@ -100,7 +124,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </style>
   </head>
   <body>
-    <my-app appTitle="My Star Production"></my-app>
+    <my-app appTitle="MySTAR Production"></my-app>
     <noscript>
       Please enable JavaScript to view this website.
     </noscript>

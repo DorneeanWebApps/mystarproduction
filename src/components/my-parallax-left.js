@@ -49,8 +49,8 @@ class MyParallax extends LitElement {
         height: 100%;
         left: 0;
         top:0;
-        background: rgba(0,0,0,.6);
-        width: 356px;
+        background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,0));
+        width: 1000px;
       }
 
 
