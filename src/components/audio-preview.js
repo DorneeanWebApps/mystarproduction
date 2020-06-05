@@ -139,7 +139,7 @@ class AudioPreview extends LitElement {
     
     }
 
-    .mobile-preview-container[hidden]{
+    #mobile-preview-container[hidden]{
         display: none;
       }
 
@@ -155,13 +155,17 @@ class AudioPreview extends LitElement {
         }
 
 
+        #my-source-mobile{
+          display: none;
+        }
+
 
         #preview-accordion-holder{
             height: 500px;
             overflow-y: scroll;
         }
 
-        .mobile-preview-container{
+        #mobile-preview-container{
           display: none;
         }
 
@@ -201,6 +205,9 @@ class AudioPreview extends LitElement {
         height: 35px;
         width: 35px;
         }
+
+        #mobile-preview-container{
+        }
       }
     
     }
@@ -224,8 +231,8 @@ class AudioPreview extends LitElement {
                                           @pause-clicked="${()=>this.pauseTrack(index)}"></audio-track-holder>
 
                                           <div id="mobile-preview-container" ?hidden=${this.selectedAudioIndex!=index||this.selectedAudioIndex==null}>
-                                            <video  ?hidden="${this.playOn===false||this.loading===true}" id="my-preview" width="380" height="215">
-                                                <source id="my-source" src="audio/audio1.mp4" type="video/mp4">
+                                            <video  ?hidden="${this.playOn===false||this.loading===true}" id="my-preview-mobile" width="380" height="215">
+                                                <source id="my-source-mobile" src="audio/audio1.mp4" type="video/mp4">
                                                 Your browser does not support the video tag.
                                             </video>
                                         </div>           
@@ -240,8 +247,8 @@ class AudioPreview extends LitElement {
                 <div id="loader-holder" ?hidden=${this.loading===false}>
 
                 </div>
-                <video  ?hidden="${this.playOn===false||this.loading===true}" id="my-preview" width="720" height="405">
-                    <source id="my-source" src="audio/audio1.mp4" type="video/mp4">
+                <video  ?hidden="${this.playOn===false||this.loading===true}" id="my-preview-desktop" width="720" height="405">
+                    <source id="my-source-desktop" src="audio/audio1.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
             </div>
@@ -257,6 +264,7 @@ class AudioPreview extends LitElement {
        loading: Boolean,
        index: Number,
        selectedAudioIndex: Number,
+       pageWidth: Number
     };
   }
 
@@ -266,15 +274,16 @@ class AudioPreview extends LitElement {
     this.notSelected = true;
     this.playOn =false;
     this.loading = false;
+    this.selectedAudioIndex =null;
   }
 
 
   firstUpdated(){
-    const myVid = this.shadowRoot.querySelector('#my-preview');
-    myVid.addEventListener('loadeddata',()=>{
-        console.log('video loaded')
-    })
+
     this.tracks=audioTracks.map(track=>({...track, selected: false}))
+
+    const pageWidth = this.shadowRoot.querySelector('#preview-holder');
+    this.pageWidth = pageWidth.offsetWidth;
   }
 
   updated(changedProps){
@@ -302,22 +311,36 @@ class AudioPreview extends LitElement {
   playTrack(index){
     this.playOn =true;
     this.loading = true;
-    const myVid = this.shadowRoot.querySelector('#my-preview');
-    const mySrc = this.shadowRoot.querySelector("#my-source");
-    const loader = this.shadowRoot.querySelector("#loader-holder");
-    loader.classList.add("animate-loader")
+    let myVid;
+    let mySrc;
+    if(this.pageWidth < 460){
+      mySrc = this.shadowRoot.querySelector("#my-source-mobile");
+      myVid = this.shadowRoot.querySelector("#my-preview-mobile")
+    }else{
+      mySrc = this.shadowRoot.querySelector("#my-source-desktop");
+      myVid = this.shadowRoot.querySelector("#my-preview-desktop")
+      const loader = this.shadowRoot.querySelector("#loader-holder");
+      loader.classList.add("animate-loader")
+      setTimeout(() => {
+        this.loading = false;
+        loader.classList.remove("animate-loader")
+      }, 1000);
+    }
+    
     mySrc.src= `audio/${this.tracks[index].file}.mp4`;
+    console.log(mySrc);
     myVid.load();
-    setTimeout(() => {
-      this.loading = false;
-      loader.classList.remove("animate-loader")
-    }, 1000);
     myVid.play();
     this.index=index;
   }
 
   pauseTrack(index){
-    const myVid = this.shadowRoot.querySelector('#my-preview');
+    let myVid;
+    if(this.pageWidth < 460){
+      myVid = this.shadowRoot.querySelector("#my-preview-mobile")
+    }else{
+      myVid = this.shadowRoot.querySelector("#my-preview-desktop")
+    }
     if(this.index===index){
       myVid.pause();
     }

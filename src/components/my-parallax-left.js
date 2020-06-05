@@ -1,6 +1,6 @@
 
 import { LitElement, html, css } from 'lit-element';
-
+import './lazy-img-big';
 // This element is *not* connected to the Redux store.
 class MyParallax extends LitElement {
   
@@ -10,7 +10,6 @@ class MyParallax extends LitElement {
       
       #parallax-container{
         position: relative;
-        height: 100vh;
         display: block;
         overflow: hidden;
       }
@@ -86,11 +85,14 @@ class MyParallax extends LitElement {
 
       @media (min-width: 1024px){
         
-        
+        #parallax-container{
+          height: 100vh;
+        }
+
         #text-container{
             position: absolute;
             left: 10vw;
-            top: 15%;
+            top: 35%;
           }
       }
 
@@ -98,8 +100,8 @@ class MyParallax extends LitElement {
       @media (max-width: 460px) {
           
           #parallax-container{
-            margin-top: 80px;
-            height: 70vh;
+            margin: 80px 0;
+            
           }
 
           #parallax-left-cover,
@@ -145,7 +147,7 @@ class MyParallax extends LitElement {
   render() {
     return html`
         <div id="parallax-container">
-          <img id="parallax-image" src="${this.data.image}">
+          <lazy-img-big id="parallax-image" .altData=${this.data.alt} .fileName="${this.data?this.data.image:""}"></lazy-img-big>
           <div id="main-layer"></div>
           <div id="parallax-left-cover">
 

@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit-element';
 
-class LazyImg extends LitElement {
+class LazyImgBig extends LitElement {
     render(props) {
         return html `       
     <style>
@@ -43,12 +43,19 @@ class LazyImg extends LitElement {
 
 
     </style>
-    <div id="my-picture" style="background-image: url('${this.fileName ? `${this.fileName}.png`:""}');">
-            
-            <img id="my-image" ?hidden="${typeof this.fileName === "undefined"}" src="${this.fileName ? `${this.fileName}.jpg`:""}" alt="${this.altData}" 
+    <div id="my-picture" style="background-image: url('${this.fileName}.png');">
+    <picture>
+            <source media="(max-width: 425px)" srcset="${this.fileName}.460px.jpg" type="image/jpeg">
+            <source media="(max-width: 768px)" srcset="${this.fileName}.750px.jpg" type="image/jpeg">
+            <source media="(max-width: 1024px)" srcset="${this.fileName}.1024px.jpg" type="image/jpeg">
+            <source media="(max-width: 1366px)" srcset="${this.fileName}.1366px.jpg" type="image/jpeg">
+            <source media="(max-width: 1440px)" srcset="${this.fileName}.1440px.jpg" type="image/jpeg">
+            <source media="(max-width: 1601px)" srcset="${this.fileName}.1600px.jpg" type="image/jpeg">
+            <img id="my-image" ?hidden="${typeof this.fileName === "undefined"}" src="${this.fileName}.1920px.jpg" alt="${this.altData}" 
                                 class="${this._loaded ? 'loaded' : ''}"
                                 @load="${this._onImgLoad}"
                                 @error="${this._onImgError}">
+    </picture>
         </div>
     `;
     }
@@ -63,16 +70,6 @@ class LazyImg extends LitElement {
         }
     }
 
-    //         <source media="(max-width: 425px)" srcset="images/webp.x425/${this.fileName}.webp" type="image/webp">
-    //         <source media="(max-width: 425px)" srcset="images/jpeg.x425/${this.fileName}.jpg" type="image/jpeg">
-    //         <source media="(max-width: 768px)" srcset="images/webp.x768/${this.fileName}.webp" type="image/webp">
-    //         <source media="(max-width: 768px)" srcset="images/jpeg.x768/${this.fileName}.jpg" type="image/jpeg">
-    //         <source media="(max-width: 1024px)" srcset="images/webp.x1024/${this.fileName}.webp" type="image/webp">
-    //         <source media="(max-width: 1024px)" srcset="images/jpeg.x1024/${this.fileName}.jpg" type="image/jpeg">
-    //         <source media="(max-width: 1440px)" srcset="images/webp.x1440/${this.fileName}.webp" type="image/webp">
-    //         <source media="(max-width: 1440px)" srcset="images/jpeg.x1440/${this.fileName}.jpg" type="image/jpeg">
-    //         <source media="(min-width: 1441px)" srcset="images/webp.x1920/${this.fileName}.webp" type="image/webp">
-    //         <source media="(min-width: 1441px)" srcset="images/jpeg.x1920/${this.fileName}.jpg" type="image/jpeg"></source>
 
     constructor() {
         super();
@@ -92,6 +89,14 @@ class LazyImg extends LitElement {
           super.update(changedProps);
     }
 
+    buildName(image){
+        if(typeof image !== "undefined") {
+            const fileNameEls = image.split('.');
+            fileNameEls.splice(-1,1);
+            this.fileName = fileNameEls.join('.');
+        }
+        
+    }
 
     _onImgLoad() {
         this._loaded = true;
@@ -105,4 +110,4 @@ class LazyImg extends LitElement {
 }
 
 
-window.customElements.define('lazy-img', LazyImg);
+window.customElements.define('lazy-img-big', LazyImgBig);

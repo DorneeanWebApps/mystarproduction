@@ -88,6 +88,7 @@ class MyApp extends connect(store)(LitElement) {
           position: relative;
           background: var(--app-primary-color);
           grid-template-columns: 1fr 1fr 1fr 1fr;
+          height: 60vh;
         }
 
         #carrousel-1{
@@ -110,6 +111,9 @@ class MyApp extends connect(store)(LitElement) {
           height: 100%;
         }
 
+        carousel-item{
+          height: 100%;
+        }
 
         #triangle-bottomleft {
           width: 0;
@@ -117,7 +121,7 @@ class MyApp extends connect(store)(LitElement) {
           border-bottom: 25vh solid var(--app-primary-color);
           border-right: 50vw solid transparent;
           position: absolute;
-          bottom: 0;
+          bottom: -5px;
           left: 0;
         }
 
@@ -127,7 +131,7 @@ class MyApp extends connect(store)(LitElement) {
           border-bottom: 25vh solid var(--app-primary-color);
           border-left: 50vw solid transparent;
           position: absolute;
-          bottom: 0;
+          bottom: -5px;
           right: 0;
         }
 
@@ -184,6 +188,7 @@ class MyApp extends connect(store)(LitElement) {
           height: 75px;
           width: 75px;
           margin: 8px auto;
+          z-index: 100;
         }
 
         #main-logo{
@@ -357,7 +362,7 @@ class MyApp extends connect(store)(LitElement) {
           padding: 24px;
           border: 1px solid #fff;
           border-radius: 5px;
-          background: rgba(0,0,0,.5);
+          background: rgba(0,0,0,.7);
           display: flex;
           flex-direction: column;
         }
@@ -438,7 +443,7 @@ class MyApp extends connect(store)(LitElement) {
         changes to a wide layout */
 
         @media (max-width: 460px) {
-          .main-wrapper{
+          #main-wrapper{
             display: flex;
             flex-direction: column;
             height: 100vh;
@@ -473,6 +478,10 @@ class MyApp extends connect(store)(LitElement) {
              height: 48px;
              width: 48px;
              align-self: center;
+           }
+
+           #mobile-slider{
+             height: calc(100vh - 107px);
            }
 
            .mobile-header-icon[active]{
@@ -549,6 +558,7 @@ class MyApp extends connect(store)(LitElement) {
            }
 
            .mobile-contact-data{
+             background: rgba(0,0,0,.7);
              align-content: center;
              box-sizing: border-box;
            }
@@ -573,7 +583,7 @@ class MyApp extends connect(store)(LitElement) {
   render() {
     // Anything that's related to rendering should be done in here.
     return html`
-      <div class="main-wrapper">
+      <div id="main-wrapper">
       <div id="app-header-desktop">
         <div id="carrousel-1" @mouseover="${()=> this.hoverMenuItem("video")}" @mouseleave="${()=> this.leaveMenuItem("video")}">
             <carousel-item direction="up" speed="2900" .images="${this.images1}"></carousel-item>
@@ -745,11 +755,11 @@ class MyApp extends connect(store)(LitElement) {
     // To force all event listeners for gestures to be passive.
     // See https://www.polymer-project.org/3.0/docs/devguide/settings#setting-passive-touch-gestures
     setPassiveTouchGestures(true);
-    this.images1=['headv1','headv2','headv3','headv4'];
-    this.images2=['heada2','heada3','heada4','heada1'];
-    this.images3=['headf1','headf2'];
-    this.images4=['headg1','headg2','headg3'];
-    this.headerImages = ['headv1','heada2', 'headf1','headg1'];
+    this.images1=[{name:'headv1',alt:"MySTAR la filmare"},{name:'headv2',alt:"MySTAR filmare cu drona"},{name:'headv3',alt:"MySTAR studio video"},{name:'headv4',alt:"MySTAR filmare cu drona"}];
+    this.images2=[{name:'heada2',alt:"MySTAR Production home recording studio"},{name:'heada3',alt:"MySTAR Production audio"},{name:'heada4',alt:"MySTAR Production cabina voci"},{name:'heada1',alt:"MySTAR Production clasic"}];
+    this.images3=[{name:'headf1',alt:"MySTAR foto"},{name:'headf2',alt:"MySTAR fotografii"}];
+    this.images4=[{name:'headg1',alt:"Michael STAR grafica"},{name:'headg2',alt:"MySTAR grafica"},{name:'headg3',alt:"MySTAR Laura Erhan"}];
+    this.headerImages = [{name:'headv1',alt:"MySTAR la filmare"},{name:'heada2',alt:"MySTAR Production home recording studio"},{name:'headf1',alt:"MySTAR foto"},{name:'headg1',alt:"Michael STAR grafica"}];
     this.mobileMenuActive = true;
     this.mobileContactActive = false;
     this.menuSelected = {
@@ -771,6 +781,7 @@ class MyApp extends connect(store)(LitElement) {
 
         window.addEventListener('scroll', () => {
           const myHeader = this.shadowRoot.querySelector('#app-header-desktop');
+          console.log("test");
           this._pageScrolled = window.pageYOffset > myHeader.offsetHeight ? true : false;
           if(this.elements){
             const scrolledElement =this.elements.find((element,eIndex)=>window.pageYOffset>element.top&&this.elements[eIndex+1]?window.pageYOffset<this.elements[eIndex+1].top:window.pageYOffset>element.top);
@@ -800,6 +811,16 @@ class MyApp extends connect(store)(LitElement) {
           behavior: 'smooth',
         });
       }, 300);
+
+      const myWrapper = this.shadowRoot.querySelector("#main-content");
+      myWrapper.addEventListener('scroll', () => {
+
+        if(myWrapper.scrollTop>380){
+          this.mobileMenuActive = false;
+        }else{
+          this.mobileMenuActive = true;
+        }
+      })
     }
 
     if(changedProps.has("selectedLink")){
@@ -840,10 +861,11 @@ class MyApp extends connect(store)(LitElement) {
 
 
   logoHoverIn(index){
-    const myLogo = this.shadowRoot.querySelector(`#scrolled-menu-logo`);
+    let myLogo = this.shadowRoot.querySelector("#scrolled-menu-logo");
     myLogo.classList.add('logo-hover');
     setTimeout(() => {
-        myLogo.src=`images/arrow-up.png`
+        myLogo.setAttribute('src','images/arrow-up.png');
+        this.requestUpdate()
     }, 200);
     setTimeout(() => {
         myLogo.classList.remove('logo-hover');
@@ -852,10 +874,11 @@ class MyApp extends connect(store)(LitElement) {
 }
 
 logoHoverOut(index){
-    const myLogo = this.shadowRoot.querySelector(`#scrolled-menu-logo`);
+    let myLogo = this.shadowRoot.querySelector(`#scrolled-menu-logo`);
     myLogo.classList.add('logo-hover');
     setTimeout(() => {
         myLogo.src=`images/load.png`
+        this.requestUpdate();
     }, 200);
 
     setTimeout(() => {

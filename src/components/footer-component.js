@@ -128,7 +128,8 @@ class FooterComponent extends LitElement {
      @media(min-width: 1024px){
       #footer-container{
             display: grid;
-            height: 60px;
+            height: 85px;
+            padding-bottom: 24px;
             z-index: 1000;
             background: #000;
             grid-template-columns: 1fr auto 1fr;

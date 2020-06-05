@@ -10,6 +10,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 import { html, css } from 'lit-element';
 import { PageViewElement } from './page-view-element.js';
+import { setPassiveTouchGestures } from '@polymer/polymer/lib/utils/settings.js';
 
 // These are the shared styles needed by this element.
 import './my-parallax-left';
@@ -129,32 +130,37 @@ class MyView1 extends PageViewElement {
 
   constructor() {
     super();
+    setPassiveTouchGestures(true);
     this.videoParallax={
       title:"Productie VIDEO",
       text: "Detinem aparatura performanta si stim sa o folosim foarte bine. Acordam o atentie deosebita postproductiei. Lucram repede si bine, la preturi corecte.",
-      image: "images/parallaxv.jpg",
-      logo: "images/logov.jpg"
+      image: "images/parallaxv",
+      logo: "images/logov.jpg",
+      alt: "MySTAR productie video"
     }
 
     this.audioParallax={
       title:"Productie AUDIO",
       text: "Inregistrare proceare voci si instrumentale, mix, master, colaje si mix-uri pentru instrumentisti, vocalisti si dansatori",
-      image: "images/parallaxa.jpg",
-      logo: "images/logoa.jpg"
+      image: "images/parallaxa",
+      logo: "images/logoa.jpg",
+      alt: "MySTAR productie audio"
     }
 
     this.fotoParallax={
       title:"Continut FOTO",
       text: "Sedinte foto, prezentare produs, locatie, corporate, fotografie suprarealista.",
-      image: "images/parallaxf.jpg",
-      logo: "images/logof.jpg"
+      image: "images/parallaxf",
+      logo: "images/logof.jpg",
+      alt: "MySTAR continut foto"
     }
 
     this.graficParallax={
       title:"Editare GRAFICA",
       text: "Afise, flyere, social media, grafica video.",
-      image: "images/parallaxg.jpg",
-      logo: "images/logog.jpg"
+      image: "images/parallaxg",
+      logo: "images/logog.jpg",
+      alt: "MySTAR productie grafica"
     }
 
     this.videoArticle={
@@ -169,7 +175,8 @@ class MyView1 extends PageViewElement {
         "Corporate (evenimente publice sau private)",
         "Petreceri private (nunti, botezuri, majorate, diferite evenimente)"
       ],
-      image:"images/videosmall.jpg"
+      image:"images/videosmall",
+      alt: "filmari MySTAR Production"
     }
 
     this.audioArticle={
@@ -183,7 +190,8 @@ class MyView1 extends PageViewElement {
         "Master",
         "Colaje pentru vocalisti, instrumentisti, dansatori"
       ],
-      image:"images/audiosmall.jpg"
+      image:"images/audiosmall",
+      alt: "studio inregistrari MySTAR Production"
     }
 
 
@@ -197,7 +205,8 @@ class MyView1 extends PageViewElement {
         "Grafica video",
         "Web design (parteneri)",
       ],
-      image:"images/graficasmall.jpg"
+      image:"images/graficasmall",
+      alt: "grafica MySTAR Production"
     }
     this.elements = [];
     this.videoPreviews = [locatii, videoclipuri, aftermovie, promo, chroma]

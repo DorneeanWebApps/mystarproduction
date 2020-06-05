@@ -11,6 +11,7 @@ class CarouselItem extends LitElement {
 
       :host{
         display: block;
+        height: 100%;
       }
 
 
@@ -18,6 +19,7 @@ class CarouselItem extends LitElement {
         width: auto;
         position: relative;
         overflow: hidden;
+        height: 100%;
       }
       
       .header-image{
@@ -113,8 +115,8 @@ class CarouselItem extends LitElement {
   render() {
     return html`
       <div id="slider-holder">
-          <lazy-img id="first-image" @load="${(e)=>this.loadImage()}" .fileName="${this.firstImage}" class="header-image"></lazy-img>
-          <lazy-img id="second-image" .fileName="${this.secondImage}" class="header-image"></lazy-img>
+          <lazy-img id="first-image" @load="${(e)=>this.loadImage()}" .altData=${this.firstAlt} .fileName="${this.firstImage}" class="header-image"></lazy-img>
+          <lazy-img id="second-image" .fileName="${this.secondImage}" .altData=${this.secondAlt} class="header-image"></lazy-img>
       </div>
        
     `;
@@ -127,6 +129,8 @@ class CarouselItem extends LitElement {
         direction: String,
         firstImage: String,
         secondImage:String,
+        firstAlt: String,
+        secondAlt: String
     };
   }
 
@@ -138,8 +142,10 @@ class CarouselItem extends LitElement {
 
   firstUpdated(){
       const secondImage = this.shadowRoot.querySelector('#second-image');
-      this.firstImage = `images/header/${this.images[0]}`;
-      this.secondImage = `images/header/${this.images[1]}`;
+      this.firstImage = `images/header/${this.images[0].name}`;
+      this.secondImage = `images/header/${this.images[1].name}`;
+      this.firstAlt = this.images[0].alt;
+      this.secondAlt = this.images[1].alt;   
       if(this.direction==="up"){
         secondImage.classList.add('element-down');
       }else{
@@ -183,9 +189,11 @@ class CarouselItem extends LitElement {
    
     setTimeout(() => {
       if (state==="second"){
-        this.firstImage = `images/header/${this.images[nextIndex]}`
+        this.firstImage = `images/header/${this.images[nextIndex].name}`
+        this.firstAlt = this.images[nextIndex].alt;
       }else{
-        this.secondImage = `images/header/${this.images[nextIndex]}`
+        this.secondImage = `images/header/${this.images[nextIndex].name}`;
+        this.secondAlt = this.images[nextIndex].alt;   
       }
       this.slideDown(nextIndex, state==="second"? "first":"second")
     }, this.speed);
@@ -209,9 +217,11 @@ class CarouselItem extends LitElement {
     let nextIndex = index<length-1? index+1 : 0;
     setTimeout(() => {
       if (state==="second"){
-        this.firstImage = `images/header/${this.images[nextIndex]}`
+        this.firstImage = `images/header/${this.images[nextIndex].name}`;
+        this.firstAlt = this.images[nextIndex].alt;
       }else{
-        this.secondImage = `images/header/${this.images[nextIndex]}`
+        this.secondImage = `images/header/${this.images[nextIndex].name}`;
+        this.secondAlt = this.images[nextIndex].alt;   
       }
       this.slideUp(nextIndex, state==="second"? "first":"second")
     }, this.speed);

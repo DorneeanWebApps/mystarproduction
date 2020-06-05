@@ -116,7 +116,7 @@ class MyArticle extends LitElement {
           </div>
           <div id="article-image-wrapper">
             <div id="image-holder">
-              <img @load="${()=>this.loadImage()}"id="article-image" src="${this.data.image}">
+              <lazy-img id="article-image" @load="${()=>this.loadImage()}" .fileName="${this.data.image}" .altData=${this.data.alt}></lazy-img>
             </div>
           </div>
         </div>

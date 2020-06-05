@@ -1,5 +1,6 @@
 
 import { LitElement, html, css } from 'lit-element';
+import './lazy-img'
 import { repeat } from 'lit-html/directives/repeat.js';
 
 
@@ -143,25 +144,25 @@ class GalleryComponent extends LitElement {
 
                 <div id="gallery-wrapper">
                     <div class="image-container" id="image-1">
-                        <img class="gallery-image" src="${this.landscapes[0]?`images/gallery/${this.landscapes[0].name}.jpg`:""}">
+                        <lazy-img class="gallery-image" .fileName="${this.landscapes[0]?`images/gallery/${this.landscapes[0].name}`:""}" .altData=${this.landscapes[0] ? this.landscapes[0].alt:""}></lazy-img>
                     </div>
                     <div class="image-container" id="image-2">
-                        <img class="gallery-image" src="${this.portraits[0]?`images/gallery/${this.portraits[0].name}.jpg`:""}">
+                        <lazy-img class="gallery-image" .fileName="${this.portraits[0]?`images/gallery/${this.portraits[0].name}`:""}" .altData=${this.portraits[0] ? this.portraits[0].alt : ""}></lazy-img>
                     </div>
                     <div class="image-container" id="image-3">
-                        <img class="gallery-image" src="${this.squares[0]?`images/gallery/${this.squares[0].name}.jpg`:""}">
+                        <lazy-img class="gallery-image" .fileName="${this.squares[0]?`images/gallery/${this.squares[0].name}`:""}" .altData=${this.squares[0] ? this.squares[0].alt : ""}></lazy-img>
                     </div>
                     <div class="image-container" id="image-4">
-                       <img class="gallery-image" src="${this.portraits[1]?`images/gallery/${this.portraits[1].name}.jpg`:""}">
+                        <lazy-img class="gallery-image" .fileName="${this.portraits[1]?`images/gallery/${this.portraits[1].name}`:""}" .altData=${this.portraits[1] ? this.portraits[1].alt:""}></lazy-img>
                     </div>
                     <div class="image-container" id="image-5">
-                        <img class="gallery-image" src="${this.squares[1]?`images/gallery/${this.squares[1].name}.jpg`:""}">
+                        <lazy-img class="gallery-image" .fileName="${this.squares[1]?`images/gallery/${this.squares[1].name}`:""}" .altData=${this.squares[1] ? this.squares[1].alt:""}></lazy-img>
                     </div>
                     <div class="image-container" id="image-6">
-                        <img class="gallery-image" src="${this.landscapes[1]?`images/gallery/${this.landscapes[1].name}.jpg`:""}">
+                        <lazy-img class="gallery-image" .fileName="${this.landscapes[1]?`images/gallery/${this.landscapes[1].name}`:""}" .altData=${this.landscapes[1] ? this.landscapes[1].alt:""}></lazy-img>
                     </div>
                     <div class="image-container" id="image-7">
-                    <img class="gallery-image" src="${this.portraits[2]?`images/gallery/${this.portraits[2].name}.jpg`:""}">
+                        <lazy-img class="gallery-image" .fileName="${this.portraits[2]?`images/gallery/${this.portraits[2].name}`:""}" .altData=${this.portraits[2] ? this.portraits[2].alt:""}></lazy-img>
                     </div>
                 </div>
 
@@ -190,6 +191,7 @@ class GalleryComponent extends LitElement {
 
 
   firstUpdated(){
+      console.log(this.gallery);
       if(!this.filter){
           this.squares = this.gallery.filter(image => image.orientation==="square").map((a) => ({sort: Math.random(), value: a}))
           .sort((a, b) => a.sort - b.sort)
