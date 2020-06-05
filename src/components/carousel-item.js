@@ -1,6 +1,6 @@
 
 import { LitElement, html, css } from 'lit-element';
-
+import './lazy-img';
 // This element is *not* connected to the Redux store.
 class CarouselItem extends LitElement {
   
@@ -113,8 +113,8 @@ class CarouselItem extends LitElement {
   render() {
     return html`
       <div id="slider-holder">
-          <img id="first-image" @load="${(e)=>this.loadImage()}" src="${this.firstImage}" class="header-image">
-          <img id="second-image" src="${this.secondImage}" class="header-image"></div>
+          <lazy-img id="first-image" @load="${(e)=>this.loadImage()}" .fileName="${this.firstImage}" class="header-image"></lazy-img>
+          <lazy-img id="second-image" .fileName="${this.secondImage}" class="header-image"></lazy-img>
       </div>
        
     `;
@@ -138,8 +138,8 @@ class CarouselItem extends LitElement {
 
   firstUpdated(){
       const secondImage = this.shadowRoot.querySelector('#second-image');
-      this.firstImage = `images/header/${this.images[0]}.jpg`;
-      this.secondImage = `images/header/${this.images[1]}.jpg`;
+      this.firstImage = `images/header/${this.images[0]}`;
+      this.secondImage = `images/header/${this.images[1]}`;
       if(this.direction==="up"){
         secondImage.classList.add('element-down');
       }else{
@@ -183,9 +183,9 @@ class CarouselItem extends LitElement {
    
     setTimeout(() => {
       if (state==="second"){
-        this.firstImage = `images/header/${this.images[nextIndex]}.jpg`
+        this.firstImage = `images/header/${this.images[nextIndex]}`
       }else{
-        this.secondImage = `images/header/${this.images[nextIndex]}.jpg`
+        this.secondImage = `images/header/${this.images[nextIndex]}`
       }
       this.slideDown(nextIndex, state==="second"? "first":"second")
     }, this.speed);
@@ -209,9 +209,9 @@ class CarouselItem extends LitElement {
     let nextIndex = index<length-1? index+1 : 0;
     setTimeout(() => {
       if (state==="second"){
-        this.firstImage = `images/header/${this.images[nextIndex]}.jpg`
+        this.firstImage = `images/header/${this.images[nextIndex]}`
       }else{
-        this.secondImage = `images/header/${this.images[nextIndex]}.jpg`
+        this.secondImage = `images/header/${this.images[nextIndex]}`
       }
       this.slideUp(nextIndex, state==="second"? "first":"second")
     }, this.speed);

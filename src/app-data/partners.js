@@ -49,6 +49,13 @@ export const partnersItems=[
         textColor: "#0f0f1e"
     },
     {
+        logo:'25',
+        logoAlb: '25_alb',
+        link: "http://www.palatulculturiibistrita.ro",
+        title: 'Palatul Culturii Bistrita',
+        textColor: "#1c773e"
+    },
+    {
         logo:'14',
         logoAlb: '14_alb',
         link: "https://www.facebook.com/DiscoRing/",
