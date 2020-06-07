@@ -602,7 +602,7 @@ class MyApp extends connect(store)(LitElement) {
         <div id="triangles-holder">
             <div id="triangle-bottomleft"></div>
             <div id="triangle-bottomright"></div>
-            <img class="header-logo" id="main-logo" src="images/load.png">
+            <img class="header-logo" id="main-logo" alt="logo MyStar Production" src="images/load.png">
         </div>
         
       </div>
@@ -622,6 +622,7 @@ class MyApp extends connect(store)(LitElement) {
       <div id="mobile-header">
         <img class="header-logo-scrolled"   
                    id="scrolled-menu-logo" 
+                   alt="logo MyStarProduction mini"
                    src="images/load.png" 
                    @click="${()=>this.selectedLink=0}">
         <iron-icon icon="dashboard" class="mobile-header-icon" ?active="${this.mobileMenuActive===true}" @click="${()=>{this.mobileMenuActive=!this.mobileMenuActive;}}"></iron-icon>
@@ -684,6 +685,7 @@ class MyApp extends connect(store)(LitElement) {
                   <img class="header-logo-scrolled"   
                       id="scrolled-menu-logo" 
                       src="images/load.png" 
+                      alt="logo MySTAR Production mini"
                       @mouseenter=${()=>this.logoHoverIn()}
                       @mouseleave=${()=>this.logoHoverOut()}
                       @click="${()=>this.selectedLink=0}">
@@ -714,7 +716,7 @@ class MyApp extends connect(store)(LitElement) {
               <div class="contact-data" ?selected=${this.contactSelected===true}>
                   <div class="data-wrapper">
                     <div class="contact-logo-holder">
-                      <img class="contact-logo" id="main-logo" src="images/load.png">
+                      <img class="contact-logo" alt="logo MyStarProduction Main" id="main-logo" src="images/load.png">
                     </div>
                     <div class="contact-data-holder">
                       <h2 class="contact-header">MySTAR Production</h2>
@@ -781,7 +783,6 @@ class MyApp extends connect(store)(LitElement) {
 
         window.addEventListener('scroll', () => {
           const myHeader = this.shadowRoot.querySelector('#app-header-desktop');
-          console.log("test");
           this._pageScrolled = window.pageYOffset > myHeader.offsetHeight ? true : false;
           if(this.elements){
             const scrolledElement =this.elements.find((element,eIndex)=>window.pageYOffset>element.top&&this.elements[eIndex+1]?window.pageYOffset<this.elements[eIndex+1].top:window.pageYOffset>element.top);
@@ -824,7 +825,6 @@ class MyApp extends connect(store)(LitElement) {
     }
 
     if(changedProps.has("selectedLink")){
-      console.log(this.selectedLink);
       this.selectedScrolledLink = this.selectedLink;
       if(this.selectedLink===0){
         window.scrollTo({'behavior': 'smooth',

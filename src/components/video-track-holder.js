@@ -214,10 +214,7 @@ class VideoTrackHolder extends LitElement {
   }
 
   playTrack(){
-    console.log('test2')
-    this.dispatchEvent(new CustomEvent('play-clicked', { detail: { index: this.index }, bubbles: true, composed: true }));
-
-    
+    this.dispatchEvent(new CustomEvent('play-clicked', { detail: { index: this.index }, bubbles: true, composed: true }));   
   }
 
   pauseTrack(){

@@ -191,7 +191,6 @@ class GalleryComponent extends LitElement {
 
 
   firstUpdated(){
-      console.log(this.gallery);
       if(!this.filter){
           this.squares = this.gallery.filter(image => image.orientation==="square").map((a) => ({sort: Math.random(), value: a}))
           .sort((a, b) => a.sort - b.sort)
@@ -204,7 +203,6 @@ class GalleryComponent extends LitElement {
           .map((a) => a.value);
       }
 
-      console.log(this.squares);
 
 
   }

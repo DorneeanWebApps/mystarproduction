@@ -153,7 +153,7 @@ class MyParallax extends LitElement {
 
           </div>
           <div id="text-container">
-              <img id="paralax-logo" src="${this.data.logo}">
+              <img id="paralax-logo" alt="${this.data.alt}" src="${this.data.logo}">
               <h2>${this.data.title}</h2>
               <p>${this.data.text}</p>
           </div>
@@ -202,7 +202,6 @@ class MyParallax extends LitElement {
         }
       }
     })
-    console.log(this.linkIndex);
     this.dispatchEvent(new CustomEvent('element-positioned', { detail: {  top: container.getBoundingClientRect().top, index: this.linkIndex}, bubbles: true, composed: true }))
   }
 
@@ -210,7 +209,6 @@ class MyParallax extends LitElement {
     if(changedProps.has("selectedLink")&&this.selectedLink){
       if(this.linkIndex===this.selectedLink){
         const element = this.shadowRoot.querySelector("#parallax-container")
-        console.log(element.getBoundingClientRect().top);
         this.dispatchEvent(new CustomEvent('must-scroll', { detail: {  top: element.getBoundingClientRect().top}, bubbles: true, composed: true }));
       }
     }

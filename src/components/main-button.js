@@ -127,7 +127,6 @@ class MainButton extends LitElement {
         const mainButton = this.shadowRoot.querySelector('#main-button');
         mainButton.style.background = `linear-gradient(45deg, ${this.gradientColors[this.actionType].in}, ${this.gradientColors[this.actionType].out})`
         mainButton.onclick = (e) => {
-            console.log("clicked");
             let viewportOffset = this.getBoundingClientRect();
             let X = parseInt(e.pageX - viewportOffset.left);
             let Y = parseInt(e.pageY - viewportOffset.top);
@@ -135,7 +134,6 @@ class MainButton extends LitElement {
             rippleDiv.classList.add('ripple');
             rippleDiv.setAttribute("style", "top:" + Y + "px; left:" + X + "px;");
             mainButton.appendChild(rippleDiv);
-            console.log(rippleDiv);
             setTimeout(() => {
                 rippleDiv.parentElement.removeChild(rippleDiv);
             }, 900);

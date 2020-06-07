@@ -251,7 +251,7 @@ class VideoPreview extends LitElement {
                             <div id="slider-container">
                             ${repeat(this.thumbnails||[], (thumb,tIndex)=>html`
                                 <div class="thumb-holder" @click="${()=>this.selectVideo(thumb.link)}">
-                                    <img class="thumb-element" id="thumb-${tIndex}" src="images/thumbnails/${thumb.thumbnail}.jpg">
+                                    <img class="thumb-element" id="thumb-${tIndex}" alt="${thumb.alt}" src="images/thumbnails/${thumb.thumbnail}.jpg">
                                     <div class="button-holder">
                                         <svg class="button-icon">${movie}</svg>
                                     </div>
@@ -315,7 +315,6 @@ class VideoPreview extends LitElement {
   
         thumbWrapper.addEventListener('wheel',(e)=>{
           e.preventDefault();
-          console.log("test")
            if (e.deltaY > 0) thumbWrapper.scrollLeft += 50;
            else thumbWrapper.scrollLeft -= 50;
         })

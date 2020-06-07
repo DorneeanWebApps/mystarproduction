@@ -479,7 +479,7 @@ class TestimonialsSection extends LitElement {
                 <div class="button-card" ?selected="${button.selected===true}" @click="${()=>this.selectCurrent(index)}">
                 <div class="button-wrapper">
                   <div class="button-holder">
-                    <img class="button-image" src="images/testimonials/${button.foto}.jpg">
+                    <img class="button-image" alt="${button.alt}" src="images/testimonials/${button.foto}.jpg">
                   </div>
                 </div>
                 <div class="button-text">
@@ -494,7 +494,7 @@ class TestimonialsSection extends LitElement {
                 <div id="testimonial-foto-container-holder">
                     <div id="testimonial-foto-container">
                         <div id="profile-picture-holder" ?loading=${this.loading===true}>
-                            <img class="main-image" src="${this.currentTestimonial.foto ? `images/testimonials/${this.currentTestimonial.foto}.jpg`:""}">
+                            <img class="main-image" alt="${this.currentTestimonial.alt}" src="${this.currentTestimonial.foto ? `images/testimonials/${this.currentTestimonial.foto}.jpg`:""}">
                         </div>
                     </div>
                 </div>
@@ -539,7 +539,7 @@ class TestimonialsSection extends LitElement {
                         <div id="triangle-bottomleft"></div>
                         <div id="triangle-bottomright"></div>
                     </div>
-                    <img class="header-logo" id="main-logo" src="images/load.png">
+                    <img class="header-logo" id="main-logo" alt="MyStar Production logo" src="images/load.png">
                 </div>
                 <footer-component></footer-component>
 
@@ -580,7 +580,6 @@ class TestimonialsSection extends LitElement {
         selected: index===tIndex ? true : false
     }));
     
-    console.log(this.testimonialItems);
     this.currentTestimonial= testimonialItems[index];
     setTimeout(() => {
         this.loading = this.intervalCleared ? false:true;

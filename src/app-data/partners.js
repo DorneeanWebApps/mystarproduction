@@ -4,160 +4,184 @@ export const partnersItems=[
         logoAlb: '3_alb',
         link: "https://hoteldorna.ro",
         title: 'Hotel Dorna',
-        textColor: "#a27eb1"
+        textColor: "#a27eb1",
+        alt: "Logo Hotel Dorna",
+
     },
     {
         logo:'2',
         logoAlb: '2_alb',
         link: "https://dornaturism.ro",
         title: 'Complex Bradul-Calimani',
-        textColor: "#52152f"
+        textColor: "#52152f",
+        alt: "Logo Bradul-Calimani",
     },
     {
         logo:'7',
         logoAlb: '7_alb',
         link: "https://www.pensiuneapoiana.ro",
         title: 'Pensiunea Poiana',
-        textColor: "#333333"
+        textColor: "#333333",
+        alt: "Logo Pensiunea Poiana",
     },
     {
         logo:'6',
         logoAlb: '6_alb',
         link: "https://www.pensiunea-melios.ro",
         title: 'Pensiunea Melios',
-        textColor: "#564a09"
+        textColor: "#564a09",
+        alt: "Logo Pensiunea Melios",
     },
     {
         logo:'20',
         logoAlb: '20_alb',
         link: "https://dorneean.ro",
         title: 'Dorneean webApps',
-        textColor: "#f29b36"
+        textColor: "#f29b36",
+        alt: "Logo Dorneean WebApps",
     },
     {
         logo:'11',
         logoAlb: '11_alb',
         link: "http://www.vatra-dornei.ro",
         title: 'Primaria Vatra Dornei',
-        textColor: "#1e2f85"
+        textColor: "#1e2f85",
+        alt: "Logo Primaria Vatra Dornei",
     },
     {
         logo:'8',
         logoAlb: '8_alb',
         link: "http://primaria-dornacandrenilor.ro",
         title: 'Primaria Dorna Candrenilor',
-        textColor: "#0f0f1e"
+        textColor: "#0f0f1e",
+        alt: "Logo Primaria Dorna Candrenilor",
     },
     {
         logo:'25',
         logoAlb: '25_alb',
         link: "http://www.palatulculturiibistrita.ro",
         title: 'Palatul Culturii Bistrita',
-        textColor: "#1c773e"
+        textColor: "#1c773e",
+        alt: "Logo Palatul Culturii Bistrita",
     },
     {
         logo:'14',
         logoAlb: '14_alb',
         link: "https://www.facebook.com/DiscoRing/",
         title: 'Club Ring Costinesti',
-        textColor: "#231f20"
+        textColor: "#231f20",
+        alt: "Logo Club Ring Costinesti",
     },
     {
         logo:'12',
         logoAlb: '12_alb',
         link: "https://www.facebook.com/ATMtheClub/",
         title: 'ATM Club Bistrita',
-        textColor: "#231f20"
+        textColor: "#231f20",
+        alt: "Logo ATM Club Bistrita",
     },
     {
         logo:'9',
         logoAlb: '9_alb',
         link: "https://www.facebook.com/colors.club.9",
         title: 'Colors Brand Bargau',
-        textColor: "#b0357f"
+        textColor: "#b0357f",
+        alt: "Logo Colors Club Bargau",
     },
     {
         logo:'22',
         logoAlb: '22_alb',
         link: "https://www.facebook.com/PlaiurileDornelor/",
         title: 'Plaiurile Dornelor',
-        textColor: "#ecb139"
+        textColor: "#ecb139",
+        alt: "Logo Ansamblul Plaiurile Dornelor",
     },
     {
         logo:'23',
         logoAlb: '23_alb',
         link: "https://www.facebook.com/plabucovinean/",
         title: 'Plai Bucovinean',
-        textColor: "#a11c1c"
+        textColor: "#a11c1c",
+        alt: "Logo Ansamblul Plai Bucovinean",
     },
     {
         logo:'24',
         logoAlb: '24_alb',
         link: "https://www.facebook.com/dornadorului",
         title: 'Dorna Dorului',
-        textColor: "#236e19"
+        textColor: "#236e19",
+        alt: "Logo Ansamblul Dorna Dorului",
     },
     {
         logo:'5',
         logoAlb: '5_alb',
         link: "https://www.facebook.com/bucovinaexpress/",
         title: 'Bucovina Express',
-        textColor: "#55311b"
+        textColor: "#55311b",
+        alt: "Logo Bucovina Express",
     },
     {
         logo:'1',
         logoAlb: '1_alb',
         link: "https://acordband-vatradornei.ro",
         title: 'Acord Band',
-        textColor: "#544a0f"
+        textColor: "#544a0f",
+        alt: "Logo Acord Band Vatra Dornei",
     },
     {
         logo:'4',
         logoAlb: '4_alb',
         link: "https://www.facebook.com/formatiaArtistic/",
         title: 'Formatia Artistic',
-        textColor: "#cea050"
+        textColor: "#cea050",
+        alt: "Logo Formatia Artistic",
     },
     {
         logo:'10',
         logoAlb: '10_alb',
         link: "https://www.facebook.com/marius.ciprian.77",
         title: 'Marius Ciprian',
-        textColor: "#a28e1e"
+        textColor: "#a28e1e",
+        alt: "Logo Marius Ciprian Sax",
     },
     {
         logo:'21',
         logoAlb: '21_alb',
         link: "https://www.facebook.com/teodora.negrea.1",
         title: 'Teodora Negrea',
-        textColor: "#bc4f29"
+        textColor: "#bc4f29",
+        alt: "Logo Teodora Negrea",
     },
     {
         logo:'13',
         logoAlb: '13_alb',
         link: "http://www.expertmusic.ro",
         title: 'Expert Music',
-        textColor: "#b2d368"
+        textColor: "#b2d368",
+        alt: "Logo Expert Music",
     },
     {
         logo:'15',
         logoAlb: '15_alb',
         link: 'https://orionmedia.ro',
         title: 'Radio Orion',
-        textColor: "#0068b3"
+        textColor: "#0068b3",
+        alt: "Logo Radio Orion Vatra Dornei",
     },
     {
         logo:'16',
         logoAlb: '16_alb',
         link: 'https://orionmedia.ro',
         title: 'Orion TV',
-        textColor: "#4e78f3"
+        textColor: "#4e78f3",
+        alt: "Logo Orion TV Vatra Dornei",
     },
     {
         logo:'17',
         logoAlb: '17_alb',
         link: "http://www.monitoruldedorna.ro",
         title: 'Monitorul de Dorna',
-        textColor: "#d6211a"
+        textColor: "#d6211a",
+        alt: "Logo Monitorul de Dorna",
     },
 ]

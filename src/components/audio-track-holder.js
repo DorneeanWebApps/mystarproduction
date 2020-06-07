@@ -191,7 +191,6 @@ class AudioTrackHolder extends LitElement {
 
   updated(changedProps){
 
-      console.log(this.viewPause)
       let trackWrapper = this.shadowRoot.querySelector('#track-wrapper');
       const itemsNo = this.track.description.length;
 
@@ -233,7 +232,6 @@ class AudioTrackHolder extends LitElement {
   }
 
   playTrack(){
-    console.log('test2')
     this.dispatchEvent(new CustomEvent('play-clicked', { detail: { index: this.index }, bubbles: true, composed: true }));
 
     

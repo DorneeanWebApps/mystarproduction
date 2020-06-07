@@ -328,7 +328,6 @@ class AudioPreview extends LitElement {
     }
     
     mySrc.src= `audio/${this.tracks[index].file}.mp4`;
-    console.log(mySrc);
     myVid.load();
     myVid.play();
     this.index=index;

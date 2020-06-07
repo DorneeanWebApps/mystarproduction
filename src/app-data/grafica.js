@@ -4,24 +4,28 @@ export const graficItems=[
         imagine: "grafica1",
         buttonTitle: "Afise",
         title: "Afise Club",
+        alt: "Machetare Afise MySTAR Production",
     },
     {
         buton:"graficbuton2",
         imagine: "grafica2",
         buttonTitle: "Afise",
         title: "Afise Evenimente",
+        alt: "Machetare Afise MySTAR Production",
     },
     {
         buton:"graficbuton3",
         imagine: "grafica3",
         buttonTitle: "puzzle",
         title: "Instagram Puzzle",
+        alt: "Instagram Puzzle MySTAR Production",
     },
      {
         buton:"graficbuton4",
         imagine: "grafica4",
         buttonTitle: "Cover",
         title: "Cover facebook / youtube",
+        alt: "Cover Facebook MySTAR Production",
     },
     {
         buton:"graficbuton5",
@@ -31,14 +35,16 @@ export const graficItems=[
         video: "story",
         mobileVideo: "story1",
         width: 1098,
-        height: 404
+        height: 404,
+        alt: "Story MySTAR Production",
     },
     {
         buton:"graficbuton6",
         imagine: "grafica6",
         title: "Promo video",
         buttonTitle: "promo",
-        link: "t7NIImBxmg0"
+        link: "t7NIImBxmg0",
+        alt: "Promo Video MySTAR Production",
     },
     {
         buton:"graficbuton7",
@@ -46,24 +52,28 @@ export const graficItems=[
         title: "Video din afis",
         buttonTitle: "video",
         link: "qxlHHAs4aFc",
+        alt: "Video din afis MySTAR Production",
     }, 
     {
         buton:"graficbuton8",
         imagine: "grafica8",
         buttonTitle: "Logo",
         title: "Logo",
+        alt: "Design Logo MySTAR Production",
     },
     {
         buton:"graficbuton9",
         imagine: "grafica9",
         buttonTitle: "Pliant",
         title: "Pliant",
+        alt: "Machetare Pliant MySTAR Production",
     }, 
     {
         buton:"graficbuton10",
         imagine: "grafica10",
         buttonTitle: "Flyere",
         title: "Flyere",
+        alt: "Machetare Flyere MySTAR Production",
     }, 
     
 ]
