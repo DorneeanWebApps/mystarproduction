@@ -27,7 +27,7 @@ import './video-preview';
 import './testimonials-section';
 
 
-import {locatii, videoclipuri, aftermovie, promo, chroma} from '../app-data/video-thumbnails';
+import {locatii, videoclipuri, produs, promo, chroma} from '../app-data/video-thumbnails';
 import { pictures } from '../app-data/gallery'
 
 class MyView1 extends PageViewElement {
@@ -209,7 +209,7 @@ class MyView1 extends PageViewElement {
       alt: "grafica MySTAR Production"
     }
     this.elements = [];
-    this.videoPreviews = [locatii, videoclipuri, aftermovie, promo, chroma]
+    this.videoPreviews = [videoclipuri, locatii, produs, promo, chroma]
     
   
   }

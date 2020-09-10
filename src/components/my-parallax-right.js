@@ -154,7 +154,7 @@ class MyParallaxRight extends LitElement {
           <div id="main-layer"></div>
           <div id="parallax-right-cover">
             <div id="text-container">
-                <img id="paralax-logo" src="${this.data.logo}">
+                <img id="paralax-logo" alt="${this.data.alt}" src="${this.data.logo}">
                 <h2>${this.data.title}</h2>
                 <p>${this.data.text}</p>
             </div>

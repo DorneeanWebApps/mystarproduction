@@ -174,7 +174,7 @@ class MobilePartnersComponent extends LitElement {
                 ${repeat(partnersItems, (partner, index)=>html`
                 <div class="partner-card">
                     <div class="partner-logo-container">
-                        <img class="partner-logo" src='images/partners/${partner.logo}.png'></div>
+                        <img class="partner-logo" alt='${partner.alt}' src='images/partners/${partner.logo}.png'></div>
                     </div>
                     <div class="parner-name">
                         <p></p>

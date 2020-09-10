@@ -35,64 +35,116 @@ class GalleryComponent extends LitElement {
           cursor: pointer
       }
 
-      #gallery-wrapper{
-          display: grid;
-          grid-template-columns: 1fr 1fr 1fr 1fr;
-          grid-template-rows: auto auto auto;
-          box-sizing: border-box;
-      }
-
-      #image-1{
-          grid-column: 1/3;
-      }
-      
-      #image-2{
-          grid-column: 3/4;
-          grid-row: 1/3;
-      }
-
-      #image-3{
-          grid-column: 4/5;
-      }
-
-      #image-4{
-          grid-column: 1/2;
-          grid-row: 2/4;
-      }
-
-      #image-5{
-          grid-column: 2/3;
-          grid-row: 2/3;
-      }
-
-      #image-6{
-          grid-column: 2/4;
-          grid-row: 3/4;
-     }
-
-      #image-7{
-          grid-column: 4/5;
-          grid-row: 2/4;
-      }
+     
 
       .image-container{
           overflow: hidden;
           border: 1px solid #000;
       }
 
-      .gallery-image{
-          width: 100%;
-          height: auto;
-          vertical-align: bottom;
-          transition: all .3s ease-out;
-          transform: scale(1.02, 1.02);
-          opacity: .7;
+
+      #preview-wrapper{
+        height: 450px;
+        display: block;
       }
 
-      .gallery-image:hover{
-          transform: scale(1.1, 1.1);
-          opacity: 1;
+      #gallery-image{
+            display: block;
+            width: auto;
+            height: 100%;
+            padding: 7px;
+            background:#e6e6e6;
+            margin: 0 auto;
       }
+
+      #slider-wrapper{
+        margin-top: 50px;
+        height: auto;
+        width: 100%;
+        display:block;
+        border-top: 1px dotted #eee;
+        border-bottom: 1px dotted #eee;
+        overflow-x: auto;
+        padding: 25px 0;
+        box-sizing: border-box;
+      }
+
+      #slider-wrapper::-webkit-scrollbar {
+                    height: 5px;
+                }
+
+        #slider-wrapper::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px grey; 
+            border-radius: 10px;
+        }
+        #slider-wrapper::-webkit-scrollbar-thumb {
+            background: linear-gradient(0deg, #009b74, #b2ff59);                    
+            border-radius: 10px;
+        }
+
+      #slider-container{
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        flex-wrap: nowrap;
+        width: auto;
+        
+      }
+
+      .thumb-element{
+        pointer-events: none;
+        flex: 0 0 auto;
+        display: flex;
+        height: 100px;
+        width: auto;
+        justify-content: center;
+        align-items: center;
+        opacity: .7;
+      }
+
+      .thumb-holder:hover>.thumb-element{
+        opacity: 1;
+      }
+
+      .thumb-holder:hover>.button-holder>.button-icon{
+        color: var(--app-secondary-color);
+      }
+
+      .thumb-holder{
+        margin-right: 24px;
+        width: auto;
+        position: relative;
+        display: block
+      }
+
+      .button-holder{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: grid;
+        align-content: center;
+        justify-content: center;
+      }
+
+      @keyframes changeImage{
+            0%{
+              opacity: 1;
+            }
+            50%{
+                opacity: 0;
+            }
+            100%{
+              opacity: 1;
+            }
+        }
+
+    .change-image{
+        animation-name: changeImage;
+        animation-duration: .4s;
+        animation-fill-mode: forwards;
+     }
 
       @media (min-width: 1024px){
 
@@ -111,6 +163,19 @@ class GalleryComponent extends LitElement {
         #filter-wrapper{
             font-size: 13px;
         }
+
+        #preview-wrapper{
+        height: 150px;
+        display: block;
+      }
+
+      .thumb-element{
+          height: 70px;
+      }
+
+      #gallery-image{
+          padding: 4px;
+      }
       }
       
 
@@ -142,27 +207,19 @@ class GalleryComponent extends LitElement {
                     
                 </div>
 
-                <div id="gallery-wrapper">
-                    <div class="image-container" id="image-1">
-                        <lazy-img class="gallery-image" .fileName="${this.landscapes[0]?`images/gallery/${this.landscapes[0].name}`:""}" .altData=${this.landscapes[0] ? this.landscapes[0].alt:""}></lazy-img>
-                    </div>
-                    <div class="image-container" id="image-2">
-                        <lazy-img class="gallery-image" .fileName="${this.portraits[0]?`images/gallery/${this.portraits[0].name}`:""}" .altData=${this.portraits[0] ? this.portraits[0].alt : ""}></lazy-img>
-                    </div>
-                    <div class="image-container" id="image-3">
-                        <lazy-img class="gallery-image" .fileName="${this.squares[0]?`images/gallery/${this.squares[0].name}`:""}" .altData=${this.squares[0] ? this.squares[0].alt : ""}></lazy-img>
-                    </div>
-                    <div class="image-container" id="image-4">
-                        <lazy-img class="gallery-image" .fileName="${this.portraits[1]?`images/gallery/${this.portraits[1].name}`:""}" .altData=${this.portraits[1] ? this.portraits[1].alt:""}></lazy-img>
-                    </div>
-                    <div class="image-container" id="image-5">
-                        <lazy-img class="gallery-image" .fileName="${this.squares[1]?`images/gallery/${this.squares[1].name}`:""}" .altData=${this.squares[1] ? this.squares[1].alt:""}></lazy-img>
-                    </div>
-                    <div class="image-container" id="image-6">
-                        <lazy-img class="gallery-image" .fileName="${this.landscapes[1]?`images/gallery/${this.landscapes[1].name}`:""}" .altData=${this.landscapes[1] ? this.landscapes[1].alt:""}></lazy-img>
-                    </div>
-                    <div class="image-container" id="image-7">
-                        <lazy-img class="gallery-image" .fileName="${this.portraits[2]?`images/gallery/${this.portraits[2].name}`:""}" .altData=${this.portraits[2] ? this.portraits[2].alt:""}></lazy-img>
+                <div id="preview-wrapper">
+
+                    <img id="gallery-image" src="${this.selectedPicture.name ?`images/gallery/${this.selectedPicture.name}.jpg`:""}" alt=${this.selectedPicture.alt ? this.selectedPicture.alt:""}>
+
+                </div>
+
+                <div id="slider-wrapper">
+                    <div id="slider-container">
+                    ${repeat(this.currentGallery||[], (thumb,index)=>html`
+                        <div class="thumb-holder" @click="${()=>this.selectImage(index)}">
+                            <img class="thumb-element" id="thumb-${index}" src="images/gallery/${thumb.name}.png">
+                        </div>
+                    `)}
                     </div>
                 </div>
 
@@ -177,7 +234,9 @@ class GalleryComponent extends LitElement {
         squares: Array,
         landscapes: Array,
         portraits: Array,
-        filter: String
+        filter: String,
+        selectedPicture: Object,
+        currentGallery: Array
     };
   }
 
@@ -187,49 +246,53 @@ class GalleryComponent extends LitElement {
     this.squares=[];
     this.portraits=[];
     this.landscapes=[];
+    this.selectedPicture={};
+    this.currentGallery=[]
   }
 
 
   firstUpdated(){
-      if(!this.filter){
-          this.squares = this.gallery.filter(image => image.orientation==="square").map((a) => ({sort: Math.random(), value: a}))
-          .sort((a, b) => a.sort - b.sort)
-          .map((a) => a.value);
-          this.portraits = this.gallery.filter(image => image.orientation==="portrait").map((a) => ({sort: Math.random(), value: a}))
-          .sort((a, b) => a.sort - b.sort)
-          .map((a) => a.value);
-          this.landscapes = this.gallery.filter(image => image.orientation==="landscape").map((a) => ({sort: Math.random(), value: a}))
-          .sort((a, b) => a.sort - b.sort)
-          .map((a) => a.value);
-      }
-
-
+    
+      this.selectedPicture = this.gallery[0];
+      this.currentGallery = this.gallery;
 
   }
 
   updated(changedProps){
-
+    if(changedProps.has('gallery')&&this.gallery.length>0){
+        const thumbWrapper = this.shadowRoot.querySelector('#slider-wrapper');
+        
+  
+        thumbWrapper.addEventListener('wheel',(e)=>{
+          e.preventDefault();
+           if (e.deltaY > 0) thumbWrapper.scrollLeft += 50;
+           else thumbWrapper.scrollLeft -= 50;
+        })
+      }
   }
 
+    selectImage(index){
+        const galleryImage = this.shadowRoot.querySelector('#gallery-image');
+        galleryImage.classList.add('change-image');
+        setTimeout(() => {
+            this.selectedPicture = this.currentGallery[index];  
+        }, 200);
+        setTimeout(() => {
+            galleryImage.classList.remove('change-image');
+        }, 400);
+    }
 
   filterGallery(category){
-      let newGal = []
-      if(category){
-        newGal = this.gallery.filter(image => image.category===category)
-      }else{
-        newGal = [...this.gallery];
-      }
+    let newGal = []
+    if(category){
+      newGal = this.gallery.filter(image => image.category===category)
+    }else{
+      newGal = [...this.gallery];
+    }
+    this.currentGallery = newGal;
+    this.selectedPicture = this.currentGallery[0];
 
-      this.squares = newGal.filter(image => image.orientation==="square").map((a) => ({sort: Math.random(), value: a}))
-      .sort((a, b) => a.sort - b.sort)
-      .map((a) => a.value);
-      this.portraits = newGal.filter(image => image.orientation==="portrait").map((a) => ({sort: Math.random(), value: a}))
-      .sort((a, b) => a.sort - b.sort)
-      .map((a) => a.value);
-      this.landscapes = newGal.filter(image => image.orientation==="landscape").map((a) => ({sort: Math.random(), value: a}))
-      .sort((a, b) => a.sort - b.sort)
-      .map((a) => a.value);
-  }
+}
 
 
  

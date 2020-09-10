@@ -265,7 +265,7 @@ class GraficComponent extends LitElement {
               <div class="button-card" ?selected="${button.selected===true}" @click="${()=>this.selectCurrent(index)}">
                 <div class="button-wrapper">
                   <div class="button-holder">
-                    <img class="button-image" src="images/grafica/buttons/${button.image}.jpg">
+                    <img class="button-image" alt="${button.alt}" src="images/grafica/buttons/${button.image}.jpg">
                   </div>
                 </div>
                 <div class="button-text">
@@ -287,7 +287,7 @@ class GraficComponent extends LitElement {
 
                 <div id="image-preview-holder" ?active=${this.imageLoaded === true}>
                   <div id="image-container" ?hidden="${this.previewMode!==true}">
-                    <img id="preview-image" src="${this.currentSelected.imagine?`images/grafica/${this.currentSelected.imagine}.jpg`:""}">
+                    <img id="preview-image" alt="${this.currentSelected.alt}" src="${this.currentSelected.imagine?`images/grafica/${this.currentSelected.imagine}.jpg`:""}">
                     <iron-icon title="vezi video" @click="${()=>this.loadVideo()}" ?hidden="${this.currentSelected.hasVideo===false}" class="video-controller" icon="av:play-circle-filled"></iron-icon>
                   </div>
                 
